@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { generateClient } from 'aws-amplify/data';
-import type { Schema } from '@/amplify/data/resource';
+import type { Schema, Todo } from '@/amplify/data/resource';
 
 const client = generateClient<Schema>();
 
 const TodoList = () => {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const { data } = await client.models.Todo.list();
+      const { data } = await client.models.Todo.list({});
       setTodos(data);
     };
 
