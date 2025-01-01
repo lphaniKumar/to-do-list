@@ -10,6 +10,7 @@ const schema = a.schema({
   Todo: a
     .model({
       content: a.string(),
+      isDone: a.boolean(),
     })
     .authorization((allow) => [allow.publicApiKey()]),
 });
@@ -23,6 +24,14 @@ export const data = defineData({
     // API Key is used for a.allow.public() rules
     apiKeyAuthorizationMode: {
       expiresInDays: 30,
+    },
+  },
+  database: {
+    type: "documentdb",
+    connection: {
+      clusterIdentifier: "your-cluster-identifier",
+      databaseName: "your-database-name",
+      secretArn: "your-secret-arn",
     },
   },
 });
