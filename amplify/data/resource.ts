@@ -26,14 +26,7 @@ export const data = defineData({
       expiresInDays: 30,
     },
   },
-  database: {
-    type: "documentdb",
-    connection: {
-      clusterIdentifier: "your-cluster-identifier",
-      databaseName: "your-database-name",
-      secretArn: "your-secret-arn",
-    },
-  },
+  // Removed the database property as it is not supported
 });
 
 /*== STEP 2 ===============================================================
